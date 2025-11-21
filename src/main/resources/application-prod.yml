@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    
+logging:
+  level:
+    com.quiz.app: WARN
+    org.springframework: WARN
+    
+management:
+  endpoint:
+    health:
+      show-details: never

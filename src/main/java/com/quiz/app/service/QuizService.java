@@ -38,8 +38,7 @@ public class QuizService {
         // Check if enough questions are available
         Long availableQuestions = questionRepository.countActiveQuestionsByTopicId(topic.getId());
         if (availableQuestions < request.getNumberOfQuestions()) {
-            throw new RuntimeException("Not enough questions available. Available: " + 
-                                     availableQuestions + ", Requested: " + request.getNumberOfQuestions());
+            log.error(String.format("Lesser questions available for topic: %d-%s in comparison to the requested questions: %d,", topic.getId(), topic.getName(), request.getNumberOfQuestions()));
         }
         
         // Get random questions
@@ -51,7 +50,7 @@ public class QuizService {
         session.setSessionId(UUID.randomUUID().toString());
         session.setUserIdentifier(request.getUserIdentifier());
         session.setTopic(topic);
-        session.setTotalQuestions(request.getNumberOfQuestions());
+        session.setTotalQuestions(availableQuestions);
         session.setStartedAt(LocalDateTime.now());
         session.setIsCompleted(false);
         

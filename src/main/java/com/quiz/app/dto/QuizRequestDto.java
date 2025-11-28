@@ -17,7 +17,7 @@ public class QuizRequestDto {
     private String topicName;
     
     @Min(value = 1, message = "Number of questions must be at least 1")
-    @Max(value = 50, message = "Number of questions cannot exceed 50")
+    @Max(value = 20, message = "Number of questions cannot exceed 50")
     private Integer numberOfQuestions = 10;
     
     private String userIdentifier; // Optional for tracking user sessions

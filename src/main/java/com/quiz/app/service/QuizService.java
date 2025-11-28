@@ -33,7 +33,7 @@ public class QuizService {
         
         // Find topic
         Topic topic = topicRepository.findByNameIgnoreCase(request.getTopicName())
-                .orElseThrow(() -> new RuntimeException("Topic not found: " + request.getTopicName()));
+                .orElseThrow(() -> new RuntimeException(String.format("Please select any other topic. Requested topic: %s is not supported yet.", request.getTopicName())));
         
         // Check if enough questions are available
         Long availableQuestions = questionRepository.countActiveQuestionsByTopicId(topic.getId());

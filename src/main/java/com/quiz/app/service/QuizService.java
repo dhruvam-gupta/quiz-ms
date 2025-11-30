@@ -50,7 +50,7 @@ public class QuizService {
         session.setSessionId(UUID.randomUUID().toString());
         session.setUserIdentifier(request.getUserIdentifier());
         session.setTopic(topic);
-        session.setTotalQuestions(availableQuestions);
+        session.setTotalQuestions(request.getNumberOfQuestions());
         session.setStartedAt(LocalDateTime.now());
         session.setIsCompleted(false);
         

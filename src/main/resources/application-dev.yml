@@ -4,6 +4,15 @@ spring:
     username: sa
     password: 
     driver-class-name: org.h2.Driver
+
+  # URL path version configuration
+  mvc:
+    apiversion:
+      use:
+        path-segment: 1
+      supported: v1,v2    
+      default: v1
+      version-required: true  
     
   h2:
     console:

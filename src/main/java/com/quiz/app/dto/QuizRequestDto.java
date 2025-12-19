@@ -16,7 +16,7 @@ public class QuizRequestDto {
     @NotBlank(message = "Topic name is required")
     private String topicName;
     
-    @Min(value = 1, message = "Number of questions must be at least 1")
+    @Min(value = 5, message = "Number of questions must be at least 5")
     @Max(value = 20, message = "Number of questions cannot exceed 20")
     private Integer numberOfQuestions = 10;
     

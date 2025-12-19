@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
 
 import jakarta.validation.Valid;
 import java.util.List;
@@ -25,9 +26,9 @@ public class TopicController {
     
     @GetMapping
     @Operation(summary = "Get all active topics", description = "Retrieve all active quiz topics with question counts")
-    public ResponseEntity<ApiResponse<List<TopicDto>>> getAllTopics() {
+    public ResponseEntity<ApiResponse<List<TopicDto>>> getAllTopics(Pageable pageable) {
         try {
-            List<TopicDto> topics = topicService.getAllActiveTopics();
+            List<TopicDto> topics = topicService.getActiveTopics(pageable);
             return ResponseEntity.ok(ApiResponse.success("Topics retrieved successfully", topics));
         } catch (Exception e) {
             log.error("Error retrieving topics", e);

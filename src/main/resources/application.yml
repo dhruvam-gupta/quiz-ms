@@ -6,6 +6,15 @@ server:
 spring:
   application:
     name: quiz-microservice
+
+  # URL path version configuration
+  mvc:
+    apiversion:
+      use:
+        path-segment: 1
+      supported: v1,v2    
+      default: v1
+      version-required: true
     
   # Database Configuration
   datasource:

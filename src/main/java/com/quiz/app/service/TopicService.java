@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,9 +21,9 @@ public class TopicService {
     
     private final TopicRepository topicRepository;
     
-    public List<TopicDto> getAllActiveTopics() {
+    public List<TopicDto> getActiveTopics(Pageable pageable) {
         log.info("Fetching all active topics");
-        List<Topic> topics = topicRepository.findActiveTopicsWithQuestions();
+        List<Topic> topics = topicRepository.findActiveTopics(pageable);
         return topics.stream()
                     .map(this::convertToDto)
                     .collect(Collectors.toList());

@@ -27,4 +27,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     
     List<Question> findByTopicIdAndDifficultyLevelAndIsActiveTrueOrderByIdAsc(
         Long topicId, Question.DifficultyLevel difficultyLevel);
+
+    @Query("SELECT COUNT(q) FROM Question q WHERE q.topic.id = :topicId AND q.isActive = true")
+    Long countActiveQuestionsByTopicId(@Param("topicId") Long topicId);    
 }

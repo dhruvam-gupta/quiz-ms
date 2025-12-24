@@ -20,7 +20,4 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
     @Query("SELECT t FROM Topic t WHERE t.isActive = true AND " +
            "EXISTS (SELECT 1 FROM Question q WHERE q.topic = t AND q.isActive = true)")
     List<Topic> findActiveTopics(Pageable pageable);
-    
-    @Query("SELECT COUNT(q) FROM Question q WHERE q.topic.id = :topicId AND q.isActive = true")
-    Long countActiveQuestionsByTopicId(@Param("topicId") Long topicId);
 }

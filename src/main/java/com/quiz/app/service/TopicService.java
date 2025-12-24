@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 public class TopicService {
     
     private final TopicRepository topicRepository;
+    private final QuestionRepository questionRepository;
     
     public List<TopicDto> getActiveTopics(Pageable pageable) {
         log.info("Fetching all active topics");
@@ -42,7 +43,7 @@ public class TopicService {
     }
     
     public Long getQuestionCountByTopicId(Long topicId) {
-        return topicRepository.countActiveQuestionsByTopicId(topicId);
+        return questionRepository.countActiveQuestionsByTopicId(topicId);
     }
     
     @Transactional

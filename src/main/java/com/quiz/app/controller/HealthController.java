@@ -25,10 +25,8 @@ public class HealthController implements HealthIndicator {
     @Operation(summary = "Health check", description = "Check if the service is running properly")
     public ResponseEntity<ApiResponse<Map<String, Object>>> healthCheck() {
         Map<String, Object> healthData = new HashMap<>();
-        healthData.put("status", "UP");
-        healthData.put("timestamp", LocalDateTime.now());
-        healthData.put("service", "Quiz Microservice");
-        healthData.put("version", "1.0.0");
+        healthData.put("status", health().getStatus().getCode());
+        healthData.putAll(health.getDetails());
         
         return ResponseEntity.ok(ApiResponse.success("Service is healthy", healthData));
     }

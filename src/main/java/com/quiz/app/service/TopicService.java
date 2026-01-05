@@ -3,6 +3,7 @@ package com.quiz.app.service;
 import com.quiz.app.dto.TopicDto;
 import com.quiz.app.entity.Topic;
 import com.quiz.app.repository.TopicRepository;
+import com.quiz.app.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
